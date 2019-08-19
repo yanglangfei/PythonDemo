@@ -12,7 +12,7 @@ print(path)
 stopwords = {'这些': 0, '那些': 0, '因为': 0, '所以': 0}  # 噪声词
 path_txt = '../file/all.txt'
 # 只有纯白色背景图片才可以渲染成图片的形状
-path_img = '../img/img4.png'
+path_img = '../img/img6.jpg'
 f = open(path_txt, 'r', encoding='UTF-8').read()
 background_image = np.array(Image.open(path_img))
 
@@ -39,7 +39,8 @@ word_cloud = WordCloud(
 # image.show()
 
 # 使用图片颜色值绘制词云   绘制在面板上
-image_colors = ImageColorGenerator(background_image)
+color_source_image = np.array(Image.open('../img/heart.jpg'))  # 注意路径
+image_colors = ImageColorGenerator(color_source_image)
 # 下面代码表示显示图片
 plt.imshow(word_cloud.recolor(color_func=image_colors), interpolation="bilinear")
 plt.axis('off')
