@@ -19,7 +19,7 @@ background_image = np.array(Image.open(path_img))
 cut_text = ' '.join(jieba.cut(f))
 word_cloud = WordCloud(
     # 设置字体，不然会出现口字乱码，文字的路径是电脑的字体一般路径，可以换成别的
-    font_path=r'C:\Windows\Fonts\STXINWEI.TTF',
+    font_path='../font/STXINWEI.TTF',
     background_color='white',
     max_words=200,  # 最大显示单词数
     max_font_size=60,  # 频率最大单词字体大小
