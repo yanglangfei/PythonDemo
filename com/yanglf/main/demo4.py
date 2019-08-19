@@ -1,4 +1,5 @@
 import sys
+import urllib3
 
 import pygame
 
@@ -8,7 +9,7 @@ screen = pygame.display.set_mode(size)
 color = (0, 0, 0)
 ball = pygame.image.load('../img/ball.jpg')
 ballrect = ball.get_rect()
-speed = [5, 5]
+speed = [1, 1]
 clock = pygame.time.Clock()  # 设置时钟
 
 while True:  # 死循环确保窗口一直显示
