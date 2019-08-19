@@ -10,7 +10,8 @@ path = os.path
 print(path)
 stopwords = {'这些': 0, '那些': 0, '因为': 0, '所以': 0}  # 噪声词
 path_txt = '../file/all.txt'
-path_img = '../img/heart01.jpg'
+# 只有纯白色背景图片才可以渲染成图片的形状
+path_img = '../img/heart.jpg'
 f = open(path_txt, 'r', encoding='UTF-8').read()
 background_image = np.array(Image.open(path_img))
 
@@ -19,10 +20,11 @@ cut_text = ' '.join(jieba.cut(f))
 word_cloud = WordCloud(
     # 设置字体，不然会出现口字乱码，文字的路径是电脑的字体一般路径，可以换成别的
     font_path=r'C:\Windows\Fonts\STXINWEI.TTF',
-    background_color='black',
-    max_words=100,  # 最大显示单词数
+    background_color='white',
+    max_words=200,  # 最大显示单词数
     max_font_size=60,  # 频率最大单词字体大小
     stopwords=stopwords,  # 过滤噪声词
+    mode="RGB",  # 颜色模型，默认为RGB。如果传入RGBA并且设置background_color=None,那么生成的词云图背景将会变成透明。
     # width=1000,
     # height=880,
     # mask参数=图片背景，必须要写上，另外有mask参数再设定宽高是无效的
@@ -30,6 +32,7 @@ word_cloud = WordCloud(
 ).generate(cut_text)
 
 image = word_cloud.to_image()
+# image = word_cloud.to_file('../file/wx.png')   生成词云到文件
 image.show()
 
 # 生成颜色值   绘制在面板上
