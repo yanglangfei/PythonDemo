@@ -27,7 +27,7 @@ word_cloud = WordCloud(
     max_font_size=60,  # 频率最大单词字体大小
     stopwords=stopwords,  # 过滤噪声词
     mode="RGB",  # 颜色模型，默认为RGB。如果传入RGBA并且设置background_color=None,那么生成的词云图背景将会变成透明。
-    random_state=42,  # 为每个词返回一个PIL颜色
+    # random_state=42,  # 为每个词返回一个PIL颜色
     # width=1000,
     # height=880,
     # mask参数=图片背景，必须要写上，另外有mask参数再设定宽高是无效的
@@ -38,7 +38,7 @@ word_cloud = WordCloud(
 # image = word_cloud.to_file('../file/wx.png')   生成词云到文件
 # image.show()
 
-# 生成颜色值   绘制在面板上
+# 使用图片颜色值绘制词云   绘制在面板上
 image_colors = ImageColorGenerator(background_image)
 # 下面代码表示显示图片
 plt.imshow(word_cloud.recolor(color_func=image_colors), interpolation="bilinear")
